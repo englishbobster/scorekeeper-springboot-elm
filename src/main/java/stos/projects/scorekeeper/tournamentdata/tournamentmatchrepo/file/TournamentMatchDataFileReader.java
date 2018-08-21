@@ -1,4 +1,4 @@
-package stos.projects.scorekeeper.file;
+package stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.file;
 
 import lombok.extern.slf4j.Slf4j;
 import stos.projects.scorekeeper.model.FootballMatch;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-public class MatchLoader {
+public class TournamentMatchDataFileReader {
     /* A line from a tournament csv file should look like this:
         0,  1,       2,                3,      4,         5,         6,       7,
         id, weekday, date as a string, time,   home team, away team, stadium, game type
@@ -29,7 +29,7 @@ public class MatchLoader {
 
     private String file;
 
-    public MatchLoader(String file) {
+    public TournamentMatchDataFileReader(String file) {
         this.file = file;
     }
 

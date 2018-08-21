@@ -3,13 +3,17 @@ package stos.projects.scorekeeper.model;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @EqualsAndHashCode
 @Builder
+@Entity
 public class FootballMatch {
-    private final int id;
+    @Id
+    private final Integer id;
     private final ZonedDateTime matchTime;
     private final String arena;
     private final String homeTeam;
