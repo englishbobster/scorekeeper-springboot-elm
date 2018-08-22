@@ -8,6 +8,7 @@ public enum MatchType {
     E("Group E"),
     F("Group F"),
     G("Group G"),
+    H("Group H"),
     ROUND16("Round of 16"),
     QUARTERS("Quarter-Finals"),
     SEMIS("Semi-Finals"),

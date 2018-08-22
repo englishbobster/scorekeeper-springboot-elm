@@ -1,24 +1,38 @@
 package stos.projects.scorekeeper.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@Setter
 @Entity
+@Table(name="planned_matches")
 public class FootballMatch {
     @Id
-    private final Integer id;
-    private final ZonedDateTime matchTime;
-    private final String arena;
-    private final String homeTeam;
-    private final String awayTeam;
-    private final MatchType matchType;
+    private Integer id;
+    @Column(name = "match_time")
+    private ZonedDateTime matchTime;
+    @Column
+    private String arena;
+    @Column(name = "home_team")
+    private String homeTeam;
+    @Column(name = "away_team")
+    private String awayTeam;
+    @Column(name = "matchtype")
+    private MatchType matchType;
 
     @Override
     public String toString() {
