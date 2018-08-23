@@ -31,7 +31,7 @@ public class FootballMatch {
     private String homeTeam;
     @Column(name = "away_team")
     private String awayTeam;
-    @Column(name = "matchtype")
+    @Column(name = "match_type")
     private MatchType matchType;
 
     @Override
