@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("admin/")
 public class AdminController {
 
     TournamentMatchRepository matchRepository;
@@ -23,7 +24,7 @@ public class AdminController {
         this.matchRepository = matchRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "hi")
+    @RequestMapping(method = RequestMethod.GET, path = "plannedmatches")
     ResponseEntity<TournamentMatchListTO> getAllPlannedTournamentMatches() {
         List<FootballMatch> plannedMatches = matchRepository.findAll();
         TournamentMatchListTO matchListTO = tournamentMatches(plannedMatches);
