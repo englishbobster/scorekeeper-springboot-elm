@@ -2,9 +2,8 @@ package stos.projects.scorekeeper.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +12,10 @@ import javax.persistence.Table;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Setter
+@Data
 @Entity
 @Table(name="planned_matches")
 public class FootballMatch {
