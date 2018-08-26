@@ -23,6 +23,9 @@ group = 'stos.projects'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+def elmSource = "./src/Main.elm"
+def jsMain = "${projectDir}/src/main/resources/static/js/Main.js"
+
 repositories {
     mavenCentral()
 }
@@ -48,8 +51,8 @@ flyway {
  * Database tasks
  ******************************************/
 task createScoreKeeperDb(type: Exec) {
-    description 'Create the scorekeeper database on PostgreSQL.'
     group 'Database'
+    description 'Create the scorekeeper database on PostgreSQL.'
     executable 'createdb'
     doFirst {
         args "-U${psqlDbUser}", "${dbName}"
@@ -57,10 +60,21 @@ task createScoreKeeperDb(type: Exec) {
 }
 
 task deleteScoreKeeperDb(type: Exec) {
-    description 'Create the scorekeeper database on PostgreSQL.'
     group 'Database'
+    description 'Drop the scorekeeper database on PostgreSQL.'
     executable 'psql'
     doFirst {
         args "-U${psqlDbUser}", "-c", "DROP DATABASE ${dbName}"
     }
+}
+
+task elmMake(type: Exec){
+    group 'elm frontend'
+    description 'Build the elm frontend'
+    workingDir "${projectDir}/src/webapp/src"
+    executable 'elm'
+    doFirst {
+        args "make", "${elmSource}", "--output=${jsMain}"
+    }
+
 }

@@ -13,7 +13,7 @@ import stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.file.Tournam
 import java.util.List;
 
 @Component
-@ConfigurationProperties(prefix="tournament.planned-matches")
+@ConfigurationProperties(prefix="scorekeeper.planned-matches")
 @Slf4j
 public class MatchDataLoader {
 
