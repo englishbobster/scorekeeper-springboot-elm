@@ -69,6 +69,9 @@ task deleteScoreKeeperDb(type: Exec) {
     }
 }
 
+/***************************************
+ * Front end tasks
+ ***************************************/
 task elmMake(type: Exec){
     group 'elm frontend'
     description 'Build the elm frontend'

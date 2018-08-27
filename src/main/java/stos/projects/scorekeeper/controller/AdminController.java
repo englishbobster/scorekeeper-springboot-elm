@@ -24,7 +24,7 @@ public class AdminController {
         this.matchRepository = matchRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "plannedmatches")
+    @RequestMapping(method = RequestMethod.GET, path = "planned-matches")
     ResponseEntity<TournamentMatchListTO> getAllPlannedTournamentMatches() {
         List<FootballMatch> plannedMatches = matchRepository.findAll();
         TournamentMatchListTO matchListTO = tournamentMatches(plannedMatches);
