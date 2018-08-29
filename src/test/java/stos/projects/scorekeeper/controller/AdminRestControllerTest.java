@@ -66,6 +66,4 @@ public class AdminRestControllerTest {
                 .andExpect(header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$.tournamentMatches", hasSize(0)));
     }
-
-
 }
