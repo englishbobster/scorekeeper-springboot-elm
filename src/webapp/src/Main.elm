@@ -1,24 +1,48 @@
 port module ScoreKeeper exposing (..)
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, div)
 import Html.Events exposing (onClick)
+import Json.Decode
 
-main =
-  Browser.sandbox { init = 0, update = update, view = view }
 
-type Msg = Increment | Decrement
+-- Types
 
-update msg model =
-  case msg of
-    Increment ->
-      model + 1
+type alias PlannedMatch =
+    { id : Int
+    , homeTeam : String
+    , awayTeam : String
+    , matchTime : String
+    , arena : String
+    , matchType : String
+    }
 
-    Decrement ->
-      model - 1
+type Msg = Noop
 
+
+-- Model
+
+type alias Model =
+    List PlannedMatch
+
+initialModel: Model
+initialModel = []
+
+
+-- Update
+
+update: Msg -> Model -> Model
+update msg model = model
+
+
+-- View
+
+view: Model -> Html Msg
 view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+  div [] []
+
+
+-- Main
+
+main: Program () Model Msg
+main =
+    Browser.sandbox { init = initialModel, update = update, view = view }

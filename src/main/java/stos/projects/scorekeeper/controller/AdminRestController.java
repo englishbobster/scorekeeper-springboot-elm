@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("admin/")
-public class AdminController {
+public class AdminRestController {
 
     TournamentMatchRepository matchRepository;
 
-    public AdminController(TournamentMatchRepository matchRepository) {
+    public AdminRestController(TournamentMatchRepository matchRepository) {
         this.matchRepository = matchRepository;
     }
 
