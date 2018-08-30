@@ -4366,13 +4366,6 @@ var elm$core$Set$toList = function (_n0) {
 	return elm$core$Dict$keys(dict);
 };
 var author$project$ScoreKeeper$initialModel = _List_Nil;
-var author$project$ScoreKeeper$update = F2(
-	function (msg, model) {
-		return model;
-	});
-var elm$core$Basics$identity = function (x) {
-	return x;
-};
 var elm$core$Basics$False = {$: 'False'};
 var elm$core$Basics$True = {$: 'True'};
 var elm$core$Result$isOk = function (result) {
@@ -4768,6 +4761,23 @@ var elm$json$Json$Decode$errorToStringHelp = F2(
 			}
 		}
 	});
+var elm$core$Platform$Cmd$batch = _Platform_batch;
+var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
+var author$project$ScoreKeeper$init = function (_n0) {
+	return _Utils_Tuple2(author$project$ScoreKeeper$initialModel, elm$core$Platform$Cmd$none);
+};
+var elm$core$Platform$Sub$batch = _Platform_batch;
+var elm$core$Platform$Sub$none = elm$core$Platform$Sub$batch(_List_Nil);
+var author$project$ScoreKeeper$subscriptions = function (model) {
+	return elm$core$Platform$Sub$none;
+};
+var author$project$ScoreKeeper$update = F2(
+	function (msg, model) {
+		return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+	});
+var elm$core$Basics$identity = function (x) {
+	return x;
+};
 var elm$json$Json$Decode$map = _Json_map1;
 var elm$json$Json$Decode$map2 = _Json_map2;
 var elm$json$Json$Decode$succeed = _Json_succeed;
@@ -5031,10 +5041,6 @@ var author$project$ScoreKeeper$view = function (model) {
 				author$project$ScoreKeeper$matchTable(model)
 			]));
 };
-var elm$core$Platform$Cmd$batch = _Platform_batch;
-var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
-var elm$core$Platform$Sub$batch = _Platform_batch;
-var elm$core$Platform$Sub$none = elm$core$Platform$Sub$batch(_List_Nil);
 var elm$browser$Browser$External = function (a) {
 	return {$: 'External', a: a};
 };
@@ -5261,25 +5267,8 @@ var elm$url$Url$fromString = function (str) {
 		elm$url$Url$Https,
 		A2(elm$core$String$dropLeft, 8, str)) : elm$core$Maybe$Nothing);
 };
-var elm$browser$Browser$sandbox = function (impl) {
-	return _Browser_element(
-		{
-			init: function (_n0) {
-				return _Utils_Tuple2(impl.init, elm$core$Platform$Cmd$none);
-			},
-			subscriptions: function (_n1) {
-				return elm$core$Platform$Sub$none;
-			},
-			update: F2(
-				function (msg, model) {
-					return _Utils_Tuple2(
-						A2(impl.update, msg, model),
-						elm$core$Platform$Cmd$none);
-				}),
-			view: impl.view
-		});
-};
-var author$project$ScoreKeeper$main = elm$browser$Browser$sandbox(
-	{init: author$project$ScoreKeeper$initialModel, update: author$project$ScoreKeeper$update, view: author$project$ScoreKeeper$view});
+var elm$browser$Browser$element = _Browser_element;
+var author$project$ScoreKeeper$main = elm$browser$Browser$element(
+	{init: author$project$ScoreKeeper$init, subscriptions: author$project$ScoreKeeper$subscriptions, update: author$project$ScoreKeeper$update, view: author$project$ScoreKeeper$view});
 _Platform_export({'ScoreKeeper':{'init':author$project$ScoreKeeper$main(
 	elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

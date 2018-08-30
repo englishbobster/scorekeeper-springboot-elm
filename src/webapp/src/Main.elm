@@ -32,8 +32,8 @@ initialModel = []
 
 -- Update
 
-update: Msg -> Model -> Model
-update msg model = model
+update: Msg -> Model -> (Model, Cmd Msg)
+update msg model = (model, Cmd.none)
 
 
 -- View
@@ -105,6 +105,18 @@ matchDecoder =
 
 -- Main
 
+init: () -> (Model, Cmd Msg)
+init _ =
+    (initialModel, Cmd.none)
+
+subscriptions: Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
 main: Program () Model Msg
 main =
-    Browser.sandbox { init = initialModel, update = update, view = view }
+    Browser.element
+    { init = init
+    , update = update
+    , subscriptions = subscriptions
+    , view = view }
