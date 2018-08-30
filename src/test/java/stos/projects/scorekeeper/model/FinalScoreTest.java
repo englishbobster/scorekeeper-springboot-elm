@@ -7,30 +7,30 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-public class ScoreTest {
+public class FinalScoreTest {
 
     @Test
     public void scores_are_equal() {
-        Score score1 = new Score(1, 1);
-        Score score2 = new Score(1, 1);
+        FinalScore finalScore1 = new FinalScore(1, 1);
+        FinalScore finalScore2 = new FinalScore(1, 1);
 
-        assertThat(score1, is(equalTo(score2)));
+        assertThat(finalScore1, is(equalTo(finalScore2)));
     }
 
     @Test
     public void scores_are_not_equal() throws Exception {
-        Score score1 = new Score(1, 1);
-        Score score2 = new Score(1, 3);
+        FinalScore finalScore1 = new FinalScore(1, 1);
+        FinalScore finalScore2 = new FinalScore(1, 3);
 
-        assertThat(score1, is(not(equalTo(score2))));
+        assertThat(finalScore1, is(not(equalTo(finalScore2))));
     }
 
     @Test
     public void toString_is_printed_correctly() throws Exception {
-        Score score1 = new Score(1, 7);
+        FinalScore finalScore1 = new FinalScore(1, 7);
 
         String expectedString = "[ 1 - 7 ]";
-        assertThat(score1.toString(), is(expectedString));
+        assertThat(finalScore1.toString(), is(expectedString));
     }
 
 }

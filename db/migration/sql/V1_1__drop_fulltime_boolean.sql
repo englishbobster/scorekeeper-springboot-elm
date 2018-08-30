@@ -1,0 +1,1 @@
+ALTER TABLE full_time_scores DROP COLUMN fulltime;

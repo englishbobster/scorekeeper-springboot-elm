@@ -28,6 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(AdminRestController.class)
 public class AdminRestControllerTest {
 
+    public static final String WEMBLEY = "Wembley";
+    public static final String ADMIN_PLANNED_MATCHES = "/admin/planned-matches";
     @Autowired
     private MockMvc mvc;
 
@@ -36,9 +38,8 @@ public class AdminRestControllerTest {
 
     private static final FootballMatch MATCH_A = FootballMatch.builder().id(1).arena("Old Trafford").matchTime(ZonedDateTime.now())
             .matchType(MatchType.A).homeTeam("Reds").awayTeam("Blues").build();
-    private static final FootballMatch MATCH_B = FootballMatch.builder().id(2).arena("Wembley").matchTime(ZonedDateTime.now())
-            .matchType(MatchType.A).homeTeam("Mancs").awayTeam("Scousers").build();
-
+    private static final FootballMatch MATCH_B = FootballMatch.builder().id(2).arena(WEMBLEY).matchTime(ZonedDateTime.now())
+            .matchType(MatchType.A).homeTeam("United").awayTeam("TheArse").build();
 
     @Test
     public void should_return_the_list_of_planned_matches() throws Exception {
@@ -47,11 +48,11 @@ public class AdminRestControllerTest {
         //when
         Mockito.when(matchRepository.findAll()).thenReturn(matches);
 
-        mvc.perform(get("/admin/planned-matches").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get(ADMIN_PLANNED_MATCHES).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$.tournamentMatches", hasSize(2)))
-                .andExpect(jsonPath("$.tournamentMatches[1].arena", is("Wembley")));
+                .andExpect(jsonPath("$.tournamentMatches[1].arena", is(WEMBLEY)));
     }
 
     @Test
@@ -61,7 +62,7 @@ public class AdminRestControllerTest {
         //when
         Mockito.when(matchRepository.findAll()).thenReturn(matches);
 
-        mvc.perform(get("/admin/planned-matches").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get(ADMIN_PLANNED_MATCHES).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$.tournamentMatches", hasSize(0)));
