@@ -6,7 +6,6 @@ import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Json.Decode exposing (Decoder, int, string, field, map6)
 import Http
-import Url.Builder as Url
 import Debug exposing (toString)
 
 
@@ -108,7 +107,7 @@ makeFootballMatchRow match =
 
 toAdminApiUrl : String
 toAdminApiUrl =
-    Url.crossOrigin "http://localhost:8080" [ "admin", "planned-matches" ] []
+    "http://127.0.0.1:8080/admin/planned-matches"
 
 
 getTournamentMatchesRequest : Http.Request Model
