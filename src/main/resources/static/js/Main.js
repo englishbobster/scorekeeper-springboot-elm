@@ -4897,7 +4897,7 @@ var author$project$ScoreKeeper$makeFootballMatchRow = function (match) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						elm$html$Html$text(match.matchType)
+						elm$html$Html$text(match.group)
 					]))
 			]));
 };

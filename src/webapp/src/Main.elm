@@ -3,19 +3,19 @@ import Browser
 import Html exposing (Html, h1, div, table, tbody, thead, th, tr, td, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Json.Decode
+import Json.Decode exposing (Decoder, int, string, field, map6)
 import Debug exposing (toString)
 
 
 -- Types
 
-type alias PlannedMatch =
+type alias Match =
     { id : Int
     , homeTeam : String
     , awayTeam : String
     , matchTime : String
     , arena : String
-    , matchType : String
+    , group : String
     }
 
 type Msg = Noop
@@ -24,7 +24,7 @@ type Msg = Noop
 -- Model
 
 type alias Model =
-    List PlannedMatch
+    List Match
 
 initialModel: Model
 initialModel = []
@@ -65,7 +65,7 @@ makeFootballMatchHeader =
         , th [] [ text "Group/Round" ]
         ]
 
-makeFootballMatchRow : PlannedMatch -> Html Msg
+makeFootballMatchRow : Match -> Html Msg
 makeFootballMatchRow match =
     tr []
         [ td [] [ text (toString match.id) ]
@@ -73,8 +73,34 @@ makeFootballMatchRow match =
         , td [] [ text match.awayTeam ]
         , td [] [ text match.matchTime ]
         , td [] [ text match.arena ]
-        , td [] [ text match.matchType ]
+        , td [] [ text match.group ]
         ]
+
+
+-- Http
+
+
+
+-- Json
+{- For the admin api we need to decode the list of matches
+    {
+    "matchid": 1,
+    "matchTime": "Thu, 12 Jun 2014 21:00:00 +0200",
+    "arena": "Sao Paulo",
+    "homeTeam": "Brazil",
+    "awayTeam": "Croatia",
+    "group": "Group A"
+    }
+-}
+matchDecoder: Decoder Match
+matchDecoder =
+    map6 Match
+        (field "matchid" int)
+        (field "homeTeam" string)
+        (field "awayTeam" string)
+        (field "matchTime" string)
+        (field "arena" string)
+        (field "group" string)
 
 
 -- Main
