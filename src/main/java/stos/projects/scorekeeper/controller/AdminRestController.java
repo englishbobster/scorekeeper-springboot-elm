@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import stos.projects.scorekeeper.controller.TransportObjects.FootballMatchTO;
 import stos.projects.scorekeeper.controller.TransportObjects.TournamentMatchListTO;
 import stos.projects.scorekeeper.model.FootballMatch;
-import stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.TournamentMatchRepository;
+import stos.projects.scorekeeper.tournamentdata.repositories.TournamentMatchRepository;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;

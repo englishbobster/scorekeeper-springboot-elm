@@ -1,4 +1,4 @@
-package stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.file;
+package stos.projects.scorekeeper.tournamentdata.repositories.file;
 
 import org.junit.Before;
 import org.junit.Rule;

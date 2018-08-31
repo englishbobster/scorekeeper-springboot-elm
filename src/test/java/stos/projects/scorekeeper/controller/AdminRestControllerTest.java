@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import stos.projects.scorekeeper.model.FootballMatch;
 import stos.projects.scorekeeper.model.MatchType;
-import stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.TournamentMatchRepository;
+import stos.projects.scorekeeper.tournamentdata.repositories.TournamentMatchRepository;
 
 import java.time.ZonedDateTime;
 import java.util.List;

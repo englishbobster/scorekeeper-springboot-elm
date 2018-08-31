@@ -8,10 +8,9 @@ CREATE TABLE planned_matches (
 );
 
 CREATE TABLE full_time_scores (
-  match_id INTEGER REFERENCES planned_matches(id) ON DELETE CASCADE,
+  match_id INTEGER REFERENCES planned_matches(id),
   home_score INTEGER,
-  away_score INTEGER,
-  fulltime BOOLEAN
+  away_score INTEGER
 );
 
 CREATE TABLE players (
@@ -25,8 +24,8 @@ CREATE TABLE players (
 );
 
 CREATE TABLE player_guesses (
-  match_id INTEGER REFERENCES planned_matches(id) ON DELETE CASCADE,
-  player_id INTEGER REFERENCES players(id) ON DELETE CASCADE,
+  match_id INTEGER REFERENCES planned_matches(id),
+  player_id INTEGER REFERENCES players(id),
   homes_score INTEGER,
   away_score INTEGER
 );

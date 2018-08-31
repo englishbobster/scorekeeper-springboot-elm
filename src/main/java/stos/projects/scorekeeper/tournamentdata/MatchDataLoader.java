@@ -7,8 +7,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import stos.projects.scorekeeper.model.FootballMatch;
-import stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.TournamentMatchRepository;
-import stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.file.TournamentMatchDataFileReader;
+import stos.projects.scorekeeper.tournamentdata.repositories.TournamentMatchRepository;
+import stos.projects.scorekeeper.tournamentdata.repositories.file.TournamentMatchDataFileReader;
 
 import java.util.List;
 
@@ -58,5 +58,6 @@ public class MatchDataLoader {
     private void populateRepo(List<FootballMatch> footballMatches) {
         log.info("Populating tournament planned_matches repository");
         matchRepository.saveAll(footballMatches);
+        matchRepository.flush();
     }
 }

@@ -1,4 +1,4 @@
-package stos.projects.scorekeeper.tournamentdata.tournamentmatchrepo.file;
+package stos.projects.scorekeeper.tournamentdata.repositories.file;
 
 import lombok.extern.slf4j.Slf4j;
 import stos.projects.scorekeeper.model.FootballMatch;
