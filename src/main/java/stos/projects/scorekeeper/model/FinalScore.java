@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name="full_time_scores")
 public class FinalScore {
     @Id
+    @Column(name = "match_id")
     private Integer id;
     @Column(name = "home_score")
     private int homeScore;
