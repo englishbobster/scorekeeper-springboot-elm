@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,14 +34,9 @@ public class FootballMatch {
     @Column(name = "match_type")
     private MatchType matchType;
 
-    @Override
-    public String toString() {
-        return "MatchId: " + id + "|"
-                + "[" + homeTeam + " vs " + awayTeam + "]" + "|"
-                + "Date: " + matchTime.format(DateTimeFormatter.RFC_1123_DATE_TIME) + "|"
-                + "Arena: " + arena + "|"
-                + "Group: " + matchType.toString() + "\n";
-    }
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "match_id", nullable = false)
+    private FinalScore finalScore;
 
     public MatchType getMatchType() {
         return matchType;
