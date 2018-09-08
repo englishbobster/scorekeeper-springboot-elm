@@ -4,7 +4,8 @@ CREATE TABLE planned_matches (
   arena VARCHAR(200),
   home_team VARCHAR(200),
   away_team VARCHAR(200),
-  match_type VARCHAR(15)
+  match_type VARCHAR(15),
+  full_type BOOLEAN
 );
 
 CREATE TABLE full_time_scores (

@@ -1,0 +1,27 @@
+#DEFAULT PROFILE
+spring:
+  profiles: default
+  datasource:
+    url: jdbc:postgresql://localhost/scorekeeper
+    username: postgres
+    password: postgres
+  resources:
+    static-locations: classpath:/static/
+
+  jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+  flyway.locations: classpath:db/migration/sql,filesystem:./db/migration/sql
+
+  devtools:
+    livereload.enabled: true
+
+scorekeeper:
+  planned-matches.fileLocation: ./data/matches.csv
+
+---
+#TEST PROFILE
+spring:
+  profiles: test
+  flyway.locations: filesystem:./src/test/resources/db/h2/sql
+  datasource:
+    url: jdbc:h2:mem:scorekeeper;MODE=PostgreSQL
+
